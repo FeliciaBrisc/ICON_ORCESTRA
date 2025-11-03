@@ -1,0 +1,1 @@
+A Python script that extracts 3D variables from the ICON ORCESTRA intake catalog on DKRZ's Levante supercomputer, remaps them to a regular longitude-latitude grid, and saves the results as NetCDF files.
