@@ -21,7 +21,7 @@ import intake
 import subprocess
 import gc
 import os
-import dask #added by me
+import dask 
 import argparse
 
 #
@@ -367,4 +367,5 @@ args = parser.parse_args()
 for date in args.dates:
 
     process_date(date, dim="3d")
+
 
