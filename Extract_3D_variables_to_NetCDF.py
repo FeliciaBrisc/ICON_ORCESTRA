@@ -7,7 +7,7 @@
 # python Extract_3D_variables_to_NetCDF.py --dates 2024-08-10 2024-08-11 2024-08-12 2024-08-13
 #
 #
-# Make sure you allocate sufficient cores on Levante — in my experience, 128 cores are required for reliable execution. 
+# Make sure you allocate sufficient cores on Levante â€” in my experience, 128 cores are required for reliable execution. 
 # salloc --partition=interactive --nodes=1 -n 128 --time=12:00:00 --account your_account -- /bin/bash -c 'ssh -X $SLURM_JOB_NODELIST'
 #
 # Version 1.0
@@ -108,7 +108,7 @@ def process_date(date, dim="3d"):
         # Create source grid file for CDO - in thid case of 0.025 resolution, modify to your desired resolution otherwise
         source_grid_file = f'source_grid_0.025.txt'
 
-        #Added by me: add the output directory
+        # Add the output directory
         source_grid_file_full_path = output_dir+source_grid_file
 
         with open(source_grid_file_full_path, 'w') as f:
@@ -131,7 +131,7 @@ def process_date(date, dim="3d"):
         nlat = len(lat_target)
         target_grid_file = f'target_grid_0.025.txt'
 
-        #Added by me: add the putput directory:
+        # Add the putput directory:
         target_grid_file_full_path = output_dir+target_grid_file
 
         with open(target_grid_file_full_path, 'w') as f:
@@ -146,7 +146,7 @@ def process_date(date, dim="3d"):
         print(f"Created CDO target grid file: {target_grid_file_full_path}")
         print_memory_usage("After creating target grid")
 
-        # Step 7: Process each variable
+        # Process each variable
         for var in data_vars:
             print(f"\nProcessing variable: {var}")
             dims = ds[var].dims
@@ -365,4 +365,5 @@ args = parser.parse_args()
 
 # Process all dates
 for date in args.dates:
+
     process_date(date, dim="3d")
