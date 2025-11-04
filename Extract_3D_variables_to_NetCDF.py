@@ -73,7 +73,7 @@ def process_date(date, dim="3d"):
         ds =  cat.ORCESTRA.LAM_ORCESTRA(date=day, dim=dim).to_dask()     
         print_memory_usage("After loading dataset")
 
-        # Step 2: Select variables
+        # Select variables
         n_cells = 9371648
         data_vars = ['qc', 'qi', 'pfull']     # Optionally process all: ['pfull', 'qc', 'qg', 'qi', 'qs', 'qv', 'rho', 'ta', 'ua', 'va', 'wa', 'zg']
 
@@ -105,7 +105,7 @@ def process_date(date, dim="3d"):
         print(f"Number of points in region: {len(clat)}")
         print_memory_usage("After region filtering")
 
-        # Create source grid file for CDO - in thid case of 0.025 resolution, modify to your desired resolution otherwise
+        # Create source grid file for CDO - in this case of 0.025 resolution, modify to your desired resolution otherwise
         source_grid_file = f'source_grid_0.025.txt'
 
         # Add the output directory
@@ -131,7 +131,7 @@ def process_date(date, dim="3d"):
         nlat = len(lat_target)
         target_grid_file = f'target_grid_0.025.txt'
 
-        # Add the putput directory:
+        # Add the output directory:
         target_grid_file_full_path = output_dir+target_grid_file
 
         with open(target_grid_file_full_path, 'w') as f:
@@ -367,3 +367,4 @@ args = parser.parse_args()
 for date in args.dates:
 
     process_date(date, dim="3d")
+
